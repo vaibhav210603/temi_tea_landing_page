@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Reveal } from "@/components/Reveal";
 
 const SHOP_URL = "https://temiteaestate.com/collections/bs";
@@ -227,6 +227,22 @@ function Legacy() {
 }
 
 function Benefits() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollRef.current && window.innerWidth < 768) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          scrollRef.current.scrollBy({ left: clientWidth * 0.8, behavior: "smooth" });
+        }
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const items = [
     {
       icon: "🛡️",
@@ -288,10 +304,16 @@ function Benefits() {
               High-altitude, slow-grown, organic — Temi Tea is not just exceptional in
               taste. It's exceptional for you.
             </p>
+            <div className="md:hidden mt-4 text-[10px] uppercase tracking-[0.2em] text-gold animate-pulse">
+              Swipe to explore wellness →
+            </div>
             <div className="gold-divider w-32 mx-auto mt-8" />
           </div>
         </Reveal>
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+        <div 
+          ref={scrollRef}
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 scroll-smooth"
+        >
           {items.map((item, i) => (
             <Reveal key={item.title} delay={i * 80} className="min-w-[85vw] sm:min-w-[45vw] md:min-w-0 snap-center">
               <div className="group relative h-[420px] overflow-hidden border border-border transition-all duration-700 shadow-sm hover:shadow-2xl hover:-translate-y-2">
@@ -326,6 +348,22 @@ function Benefits() {
 }
 
 function Products() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollRef.current && window.innerWidth < 768) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          scrollRef.current.scrollBy({ left: clientWidth * 0.8, behavior: "smooth" });
+        }
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const products = [
     {
       name: "First Pluck (Spring Flush)",
@@ -361,10 +399,16 @@ function Products() {
             <h2 className="font-serif text-4xl md:text-5xl text-forest-deep text-balance">
               Featured Teas from the Estate
             </h2>
+            <div className="md:hidden mt-4 text-[10px] uppercase tracking-[0.2em] text-gold animate-pulse">
+              Swipe to view collection →
+            </div>
             <div className="gold-divider w-32 mx-auto mt-8" />
           </div>
         </Reveal>
-        <div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+        <div 
+          ref={scrollRef}
+          className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 scroll-smooth"
+        >
           {products.map((p, i) => (
             <Reveal key={p.name} delay={i * 120} className="min-w-[85vw] sm:min-w-[45vw] md:min-w-0 snap-center">
               <a 
