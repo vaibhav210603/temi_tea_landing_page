@@ -1,0 +1,12 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0v~ds06._.js")
+R.c("server/chunks/ssr/07nn_next_dist_esm_build_templates_app-page_0zyudc1.js")
+R.c("server/chunks/ssr/[root-of-the-server]__09x~3ib._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__082qzon._.js")
+R.c("server/chunks/ssr/OneDrive_Desktop_Temi Tea_sikkim-s-golden-sip_app_layout_tsx_0x9e7lq._.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_01o.v9p._.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_builtin_forbidden_057qk_v.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_builtin_unauthorized_0~4q8my.js")
+R.c("server/chunks/ssr/0~qp_sikkim-s-golden-sip__next-internal_server_app__not-found_page_actions_0xnec.k.js")
+R.m(38800)
+module.exports=R.m(38800).exports

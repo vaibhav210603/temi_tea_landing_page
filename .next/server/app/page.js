@@ -1,0 +1,13 @@
+var R=require("../chunks/ssr/[turbopack]_runtime.js")("server/app/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__056x-mi._.js")
+R.c("server/chunks/ssr/07nn_next_dist_esm_build_templates_app-page_0kq5xh5.js")
+R.c("server/chunks/ssr/[root-of-the-server]__09x~3ib._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__082qzon._.js")
+R.c("server/chunks/ssr/OneDrive_Desktop_Temi Tea_sikkim-s-golden-sip_app_layout_tsx_0x9e7lq._.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_01o.v9p._.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_builtin_forbidden_057qk_v.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_builtin_unauthorized_0~4q8my.js")
+R.c("server/chunks/ssr/07nn_next_dist_client_components_builtin_global-error_0-qvm8~.js")
+R.c("server/chunks/ssr/0ujh_Temi Tea_sikkim-s-golden-sip__next-internal_server_app_page_actions_05c5qe~.js")
+R.m(13556)
+module.exports=R.m(13556).exports
