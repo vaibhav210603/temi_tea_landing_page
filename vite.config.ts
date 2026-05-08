@@ -6,4 +6,7 @@ export default defineConfig({
   tanstackStart: {
     target: "vercel",
   },
+  ssr: {
+    noExternal: true,
+  },
 });
