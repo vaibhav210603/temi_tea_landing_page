@@ -231,15 +231,18 @@ function Benefits() {
   
   useEffect(() => {
     const interval = setInterval(() => {
-      if (scrollRef.current && window.innerWidth < 768) {
+      if (scrollRef.current && window.innerWidth < 1024) {
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+        const maxScroll = scrollWidth - clientWidth;
+        
+        if (scrollLeft >= maxScroll - 10) {
           scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          scrollRef.current.scrollBy({ left: clientWidth * 0.8, behavior: "smooth" });
+          const scrollAmount = clientWidth * 0.85 + 24;
+          scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
       }
-    }, 4000);
+    }, 1500);
     return () => clearInterval(interval);
   }, []);
 
@@ -352,15 +355,19 @@ function Products() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (scrollRef.current && window.innerWidth < 768) {
+      if (scrollRef.current && window.innerWidth < 1024) { // Increased threshold to include tablets
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+        const maxScroll = scrollWidth - clientWidth;
+        
+        if (scrollLeft >= maxScroll - 10) {
           scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          scrollRef.current.scrollBy({ left: clientWidth * 0.8, behavior: "smooth" });
+          // Scroll exactly one item width (85vw + gap)
+          const scrollAmount = clientWidth * 0.85 + 24; 
+          scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
       }
-    }, 5000);
+    }, 1500); // 1.5s is safer for 'smooth' animation to complete, 1s often conflicts with browser frame budget
     return () => clearInterval(interval);
   }, []);
 
