@@ -90,7 +90,7 @@ function Hero() {
       ))}
 
       <div className="relative z-10 flex min-h-screen items-center">
-        <div className="mx-auto max-w-7xl px-6 pt-28 pb-20 w-full">
+        <div className="mx-auto max-w-7xl px-6 pt-40 md:pt-28 pb-20 w-full">
           <div className="max-w-3xl animate-fade-up">
             <div className="inline-flex items-center gap-3 mb-8 text-[11px] uppercase tracking-[0.4em] text-gold">
               <span className="h-px w-10 bg-gold" />
@@ -291,9 +291,9 @@ function Benefits() {
             <div className="gold-divider w-32 mx-auto mt-8" />
           </div>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
           {items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 80}>
+            <Reveal key={item.title} delay={i * 80} className="min-w-[85vw] sm:min-w-[45vw] md:min-w-0 snap-center">
               <div className="group relative h-[420px] overflow-hidden border border-border transition-all duration-700 shadow-sm hover:shadow-2xl hover:-translate-y-2">
                 <img 
                   src={item.image} 
@@ -364,9 +364,9 @@ function Products() {
             <div className="gold-divider w-32 mx-auto mt-8" />
           </div>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
           {products.map((p, i) => (
-            <Reveal key={p.name} delay={i * 120}>
+            <Reveal key={p.name} delay={i * 120} className="min-w-[85vw] sm:min-w-[45vw] md:min-w-0 snap-center">
               <a 
                 href={p.link}
                 target="_blank"
