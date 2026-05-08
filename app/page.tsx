@@ -242,7 +242,7 @@ function Benefits() {
           scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
       }
-    }, 1500);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -367,7 +367,7 @@ function Products() {
           scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
       }
-    }, 1500); // 1.5s is safer for 'smooth' animation to complete, 1s often conflicts with browser frame budget
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
