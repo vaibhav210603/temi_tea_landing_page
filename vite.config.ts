@@ -7,6 +7,6 @@ export default defineConfig({
     target: "vercel",
   },
   ssr: {
-    noExternal: true,
+    noExternal: [/.*/],
   },
 });

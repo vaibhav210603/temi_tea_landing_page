@@ -36,8 +36,9 @@ writeFileSync(
   join(funcDir, ".vc-config.json"),
   JSON.stringify(
     {
-      runtime: "edge",
-      entrypoint: "index.js",
+      runtime: "nodejs20.x",
+      handler: "index.js",
+      launcherType: "Nodejs",
     },
     null,
     2,
