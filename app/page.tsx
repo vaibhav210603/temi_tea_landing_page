@@ -481,17 +481,7 @@ function Footer() {
             </a>
           ))}
         </nav>
-        <div className="flex flex-col md:items-end gap-5">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-1">Follow the Journey</p>
-          <div className="flex gap-3">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="border border-forest-deep/10 w-10 h-10 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-500">
-              ◉
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="border border-forest-deep/10 w-10 h-10 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-500">
-              f
-            </a>
-          </div>
-        </div>
+
       </div>
       <div className="mx-auto max-w-7xl px-6 mt-12 pt-6 border-t border-forest-deep/5 text-[9px] uppercase tracking-widest text-forest-deep/40 flex flex-wrap justify-between gap-4">
         <span>© 2026 Temi Tea Estate · Govt. of Sikkim</span>
