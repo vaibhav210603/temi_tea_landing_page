@@ -26,18 +26,49 @@ mkdirSync(funcDir, { recursive: true });
 // Copy server bundle into function directory
 cpSync(join(dist, "server"), funcDir, { recursive: true });
 
-// Vercel Edge Function entrypoint — re-export the server bundle's fetch handler
+// Vercel Node.js Function entrypoint — bridges Node.js (req, res) to Web (Request, Response)
 writeFileSync(
   join(funcDir, "index.js"),
-  `import server from "./server.js";\nexport default server.fetch;\n`,
+  `import server from "./server.js";
+export default async function handler(req, res) {
+  const protocol = req.headers['x-forwarded-proto'] || 'http';
+  const host = req.headers['host'];
+  const url = new URL(req.url, \`\${protocol}://\${host}\`);
+  
+  const headers = new Headers();
+  for (const [key, value] of Object.entries(req.headers)) {
+    if (value) headers.set(key, Array.isArray(value) ? value.join(', ') : value);
+  }
+
+  const webReq = new Request(url, {
+    method: req.method,
+    headers,
+    body: req.method !== 'GET' && req.method !== 'HEAD' ? req : undefined,
+    duplex: 'half'
+  });
+
+  try {
+    const webRes = await server.fetch(webReq);
+    res.statusCode = webRes.status;
+    webRes.headers.forEach((v, k) => res.setHeader(k, v));
+    
+    const body = await webRes.arrayBuffer();
+    res.end(Buffer.from(body));
+  } catch (err) {
+    console.error("[ssr-error]", err);
+    res.statusCode = 500;
+    res.end('Internal Server Error');
+  }
+}`,
 );
 
 writeFileSync(
   join(funcDir, ".vc-config.json"),
   JSON.stringify(
     {
-      runtime: "edge",
-      entrypoint: "index.js",
+      runtime: "nodejs20.x",
+      handler: "index.js",
+      launcherType: "Nodejs",
     },
     null,
     2,
