@@ -4,6 +4,17 @@ import heroImg from "@/assets/hero-temi.jpg";
 import teaCup from "@/assets/tea-cup.jpg";
 import legacyImg from "@/assets/legacy-garden.jpg";
 import ctaMist from "@/assets/cta-mist.jpg";
+import temiLogo from "@/assets/temitea.png";
+import mrcLogo from "@/assets/MRC_LOGO.png";
+import benefitAntioxidants from "@/assets/benefit-antioxidants.png";
+import benefitInflammation from "@/assets/benefit-inflammation.png";
+import benefitHeart from "@/assets/benefit-heart.png";
+import benefitSkin from "@/assets/benefit-skin.png";
+import benefitClarity from "@/assets/benefit-clarity.png";
+import benefitPurity from "@/assets/benefit-purity.png";
+import firstPluck from "@/assets/first_pluck.png";
+import greenTea from "@/assets/green_tea.png";
+import specialTea from "@/assets/special.png";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
@@ -47,20 +58,22 @@ function Navbar() {
   }, []);
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[oklch(0.32_0.05_150/0.92)] backdrop-blur-md py-3 shadow-lg" : "py-5 bg-transparent"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm border-b border-gold/10 ${
+        scrolled ? "py-3" : "py-4"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 text-cream">
-          <span className="font-serif text-2xl tracking-wide text-cream">Temi</span>
-          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.3em] text-gold">Est. 1969</span>
+        <a href="#top" className="flex items-center gap-3">
+          <img src={temiLogo} alt="Temi Tea Logo" className="h-10 w-auto" />
+          <div className="flex flex-col">
+            <span className="font-serif text-xl tracking-wide leading-none text-forest-deep">Temi Tea Estate</span>
+            <span className="text-[8px] uppercase tracking-[0.3em] text-gold mt-1">Est. 1969</span>
+          </div>
         </a>
-        <nav className="hidden md:flex items-center gap-9 text-sm text-cream/85">
+        <nav className="hidden md:flex items-center gap-9 text-sm text-forest-deep/80">
           <a href="#legacy" className="hover:text-gold transition">Legacy</a>
-          <a href="#why" className="hover:text-gold transition">Why Temi</a>
-          <a href="#products" className="hover:text-gold transition">Teas</a>
-          <a href="#benefits" className="hover:text-gold transition">Benefits</a>
+          <a href="#benefits" className="hover:text-gold transition">Wellness</a>
+          <a href="#products" className="hover:text-gold transition">Collection</a>
           <a href="#contact" className="hover:text-gold transition">Visit</a>
         </nav>
         <a
@@ -112,7 +125,7 @@ function Hero() {
               Government of Sikkim · Estd. 1969
             </div>
             <h1 className="font-serif text-cream text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.02] text-balance">
-              Sip the Soul of the <em className="not-italic text-gold">Himalayas</em>
+              Sip the Soul of the <em className="not-italic text-white">Himalayas</em>
             </h1>
             <p className="mt-8 text-cream/85 text-lg md:text-xl max-w-2xl leading-relaxed">
               India's only government-owned organic tea garden — straight from the
@@ -171,11 +184,11 @@ function Ticker() {
   ];
   const row = [...items, ...items];
   return (
-    <section className="bg-forest-deep text-cream border-y border-gold/30 overflow-hidden">
-      <div className="flex animate-ticker whitespace-nowrap py-5">
+    <section className="bg-cream text-forest-deep border-y-2 border-gold/40 overflow-hidden shadow-inner">
+      <div className="flex animate-ticker whitespace-nowrap py-4">
         {row.map((t, i) => (
-          <span key={i} className="px-8 text-xs sm:text-sm uppercase tracking-[0.3em] flex items-center gap-8">
-            <span className="text-gold">✦</span>
+          <span key={i} className="px-8 text-xs sm:text-sm font-medium uppercase tracking-[0.3em] flex items-center gap-8">
+            <span className="text-gold animate-pulse">✦</span>
             {t}
           </span>
         ))}
@@ -184,54 +197,7 @@ function Ticker() {
   );
 }
 
-function WhyTemi() {
-  const cols = [
-    {
-      icon: "🏛️",
-      title: "Government-Owned. State-Backed.",
-      body:
-        "Owned and operated by the Government of Sikkim since 1969. When you buy Temi Tea, you buy from the source — not a distributor, not a marketplace. Direct from the garden.",
-    },
-    {
-      icon: "📍",
-      title: "Geotagged & 100% Traceable",
-      body:
-        "Every batch is geotagged to 27°14′12″N, 88°25′20″E — Temi, South Sikkim. What you receive is exactly what the mountain gives. No blending, no adulteration. Pure Sikkim in every cup.",
-    },
-    {
-      icon: "🌿",
-      title: "Certified Organic Since 2008",
-      body:
-        "Certified under the Institute of Marketecology (IMO), Switzerland. Zero synthetic pesticides, zero chemicals. Natural composting, vermi-culture, and Himalayan rainwater — nothing else.",
-    },
-  ];
-  return (
-    <section id="why" className="py-28 bg-cream">
-      <div className="mx-auto max-w-7xl px-6">
-        <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <p className="text-[11px] uppercase tracking-[0.4em] text-gold mb-5">The Difference</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-forest-deep text-balance">
-              Why Temi is unlike any tea you've tasted
-            </h2>
-            <div className="gold-divider w-32 mx-auto mt-8" />
-          </div>
-        </Reveal>
-        <div className="grid md:grid-cols-3 gap-10">
-          {cols.map((c, i) => (
-            <Reveal key={c.title} delay={i * 120}>
-              <div className="h-full bg-card p-10 border border-border hover:border-gold/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-                <div className="text-4xl mb-6">{c.icon}</div>
-                <h3 className="font-serif text-2xl text-forest-deep mb-4 leading-snug">{c.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{c.body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 function Legacy() {
   return (
@@ -295,36 +261,100 @@ function Legacy() {
 
 function Benefits() {
   const items = [
-    ["🛡️", "Rich in Antioxidants", "Fights free radicals, slows cell ageing."],
-    ["💚", "Anti-Inflammatory", "Clinically studied inhibitory action against histamine, serotonin & prostaglandin-induced inflammation."],
-    ["🫀", "Heart Health", "Supports healthy cholesterol and cardiovascular function."],
-    ["✨", "Skin Glow", "Antioxidants promote radiant, clear skin."],
-    ["🧠", "Mental Clarity", "L-theanine + gentle caffeine — alert without the crash."],
-    ["🌿", "Zero Chemicals", "No pesticides, no synthetics. Pure mountain goodness."],
+    {
+      icon: "🛡️",
+      title: "Rich in Antioxidants",
+      body: "Fights free radicals, slows cell ageing.",
+      color: "from-blue-900/40",
+      image: benefitAntioxidants,
+    },
+    {
+      icon: "💚",
+      title: "Anti-Inflammatory",
+      body: "Clinically studied inhibitory action against histamine, serotonin & prostaglandin-induced inflammation.",
+      color: "from-green-900/40",
+      image: benefitInflammation,
+    },
+    {
+      icon: "🫀",
+      title: "Heart Health",
+      body: "Supports healthy cholesterol and cardiovascular function.",
+      color: "from-red-900/40",
+      image: benefitHeart,
+    },
+    {
+      icon: "✨",
+      title: "Skin Glow",
+      body: "Antioxidants promote radiant, clear skin.",
+      color: "from-amber-900/40",
+      image: benefitSkin,
+    },
+    {
+      icon: "🧠",
+      title: "Mental Clarity",
+      body: "L-theanine + gentle caffeine — alert without the crash.",
+      color: "from-purple-900/40",
+      image: benefitClarity,
+    },
+    {
+      icon: "🌿",
+      title: "Zero Chemicals",
+      body: "No pesticides, no synthetics. Pure mountain goodness.",
+      color: "from-emerald-900/40",
+      image: benefitPurity,
+    },
   ];
   return (
     <section id="benefits" className="py-28 bg-cream relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
+      {/* Decorative background leaf */}
+      <div className="absolute -right-20 top-20 text-[300px] text-gold/5 pointer-events-none select-none rotate-12">
+        🌿
+      </div>
+      
+      <div className="mx-auto max-w-7xl px-6 relative z-10">
         <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-20">
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold mb-5">Wellness</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-forest-deep text-balance">
+            <h2 className="font-serif text-4xl md:text-5xl text-forest-deep text-balance leading-tight">
               Nature's Most Powerful Cup
             </h2>
-            <p className="mt-6 text-muted-foreground text-lg">
+            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
               High-altitude, slow-grown, organic — Temi Tea is not just exceptional in
               taste. It's exceptional for you.
             </p>
             <div className="gold-divider w-32 mx-auto mt-8" />
           </div>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-          {items.map(([icon, title, body], i) => (
-            <Reveal key={title} delay={i * 80}>
-              <div className="bg-card p-10 h-full hover:bg-secondary transition">
-                <div className="text-3xl mb-5">{icon}</div>
-                <h3 className="font-serif text-xl text-forest-deep mb-3">{title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{body}</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {items.map((item, i) => (
+            <Reveal key={item.title} delay={i * 80}>
+              <div className={`group relative h-[420px] overflow-hidden border border-border transition-all duration-700 shadow-sm hover:shadow-2xl hover:-translate-y-2`}>
+                {/* Background Image with Zoom */}
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                
+                {/* Overlays */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
+                
+                {/* Content */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-6 transition-transform group-hover:scale-110 duration-500 w-fit drop-shadow-lg">
+                      {item.icon}
+                    </div>
+                    <h3 className="font-serif text-2xl text-cream mb-4 group-hover:text-gold transition-colors duration-500">
+                      {item.title}
+                    </h3>
+                    <p className="text-cream/80 text-sm leading-relaxed mb-6 line-clamp-3">
+                      {item.body}
+                    </p>
+                    <div className="w-12 h-0.5 bg-gold group-hover:w-full transition-all duration-700" />
+                  </div>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -341,18 +371,24 @@ function Products() {
       desc: "Among the rarest teas in the world. Light floral finish, golden liquor, delicate muscatel.",
       price: "₹1,160",
       tag: "Limited Harvest",
+      image: firstPluck,
+      link: "https://temiteaestate.com/products/firstpluck-nat",
     },
     {
       name: "Temi Tea Special",
       desc: "The pride of the garden. Aromatic, rich, deeply satisfying.",
       price: "₹530",
       tag: "Bestseller",
+      image: specialTea,
+      link: "https://temiteaestate.com/products/temiteaspecial-nat",
     },
     {
       name: "Green Tea",
       desc: "Smooth second flush. Toasty amber brew with all the gusto of summer.",
       price: "₹421",
       tag: "Organic",
+      image: greenTea,
+      link: "https://temiteaestate.com/products/greentea-nat",
     },
   ];
   return (
@@ -370,126 +406,41 @@ function Products() {
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((p, i) => (
             <Reveal key={p.name} delay={i * 120}>
-              <article className="group bg-card border border-border hover:border-gold transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
-                <div className="relative aspect-[4/5] overflow-hidden bg-forest-deep">
-                  <img
-                    src={teaCup}
-                    alt={`${p.name} — Temi Tea`}
-                    width={1280}
-                    height={1280}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute top-4 left-4 bg-cream/95 text-forest-deep text-[10px] uppercase tracking-[0.25em] px-3 py-1.5">
-                    {p.tag}
-                  </span>
-                  {/* steam */}
-                  <span className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-1.5 h-10 bg-white/30 blur-md rounded-full animate-steam" />
-                  <span className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-1 h-8 bg-white/40 blur-md rounded-full animate-steam" style={{ animationDelay: "1.5s" }} />
-                </div>
-                <div className="p-7 flex flex-col flex-1">
-                  <h3 className="font-serif text-2xl text-forest-deep">{p.name}</h3>
-                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">{p.desc}</p>
-                  <div className="mt-6 flex items-center justify-between">
-                    <span className="font-serif text-2xl text-forest-deep">{p.price}</span>
-                    <a
-                      href={SHOP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[11px] uppercase tracking-[0.25em] text-forest-deep border-b border-gold pb-1 hover:text-gold transition"
-                    >
-                      Buy Now →
-                    </a>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Awards() {
-  const awards = [
-    "🏆 All India Quality Award · Tea Board of India (1994 & 1995)",
-    "🇨🇭 IMO Certified Organic · Switzerland",
-    "🇯🇵 Preferred by Japan & European luxury markets",
-    "🌍 Exported to premium international buyers",
-    "🌿 Organic Certification active since 2008 · annually inspected",
-  ];
-  return (
-    <section className="bg-forest-deep text-cream py-24 relative">
-      <div className="absolute inset-0 grain opacity-40" />
-      <div className="mx-auto max-w-7xl px-6 relative">
-        <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-[11px] uppercase tracking-[0.4em] text-gold mb-5">Global Recognition</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-balance">Laurels from Around the World</h2>
-            <div className="gold-divider w-32 mx-auto mt-8" />
-          </div>
-        </Reveal>
-        <Reveal>
-          <div className="flex flex-wrap justify-center gap-3">
-            {awards.map((a) => (
-              <span
-                key={a}
-                className="border border-gold/40 text-cream/90 px-5 py-3 text-xs sm:text-sm tracking-wide hover:bg-gold/10 transition"
+              <a 
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-card border border-border hover:border-gold transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full"
               >
-                {a}
-              </span>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  const quotes = [
-    {
-      q: "The floral aroma with a hint of honey made my mornings brighter. A perfect cup that reflects the beauty of Sikkim.",
-      a: "Anita Sharma",
-      r: "Tea Enthusiast",
-    },
-    {
-      q: "Temi stands out with smooth muscatel notes. Refreshing as Darjeeling but with its own distinct soul.",
-      a: "Rajat Sen",
-      r: "Travel Blogger",
-    },
-    {
-      q: "The First Flush is outstanding — better than many expensive imported teas I've tried.",
-      a: "James Wilson",
-      r: "Tea Collector",
-    },
-  ];
-  return (
-    <section className="py-28 bg-cream">
-      <div className="mx-auto max-w-7xl px-6">
-        <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-[11px] uppercase tracking-[0.4em] text-gold mb-5">In Their Words</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-forest-deep text-balance">
-              Loved by connoisseurs worldwide
-            </h2>
-            <div className="gold-divider w-32 mx-auto mt-8" />
-          </div>
-        </Reveal>
-        <div className="grid md:grid-cols-3 gap-8">
-          {quotes.map((t, i) => (
-            <Reveal key={t.a} delay={i * 120}>
-              <figure className="bg-card border border-border p-10 h-full flex flex-col">
-                <span className="font-serif text-6xl text-gold leading-none">"</span>
-                <blockquote className="font-serif text-xl text-forest-deep italic leading-snug mt-2 flex-1">
-                  {t.q}
-                </blockquote>
-                <figcaption className="mt-8 pt-6 border-t border-border">
-                  <div className="font-medium text-forest-deep">{t.a}</div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{t.r}</div>
-                </figcaption>
-              </figure>
+                <article className="flex flex-col h-full">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-forest-deep">
+                    <img
+                      src={p.image}
+                      alt={`${p.name} — Temi Tea`}
+                      width={1280}
+                      height={1280}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute top-4 left-4 bg-cream/95 text-forest-deep text-[10px] uppercase tracking-[0.25em] px-3 py-1.5">
+                      {p.tag}
+                    </span>
+                    {/* steam */}
+                    <span className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-1.5 h-10 bg-white/30 blur-md rounded-full animate-steam" />
+                    <span className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-1 h-8 bg-white/40 blur-md rounded-full animate-steam" style={{ animationDelay: "1.5s" }} />
+                  </div>
+                  <div className="p-7 flex flex-col flex-1">
+                    <h3 className="font-serif text-2xl text-forest-deep">{p.name}</h3>
+                    <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">{p.desc}</p>
+                    <div className="mt-6 flex items-center justify-between">
+                      <span className="font-serif text-2xl text-forest-deep">{p.price}</span>
+                      <span className="text-[11px] uppercase tracking-[0.25em] text-forest-deep border-b border-gold pb-1 group-hover:text-gold transition">
+                        Buy Now →
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
             </Reveal>
           ))}
         </div>
@@ -497,6 +448,11 @@ function Testimonials() {
     </section>
   );
 }
+
+// Removed old Awards section as it is replaced by GlobalRecognition
+
+
+
 
 function CTA() {
   return (
@@ -529,14 +485,6 @@ function CTA() {
             >
               Shop All Products
             </a>
-            <a
-              href={OFFERS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-cream/50 text-cream px-8 py-4 text-sm uppercase tracking-[0.2em] hover:border-gold hover:text-gold transition"
-            >
-              View Offers
-            </a>
           </div>
           <p className="mt-10 text-cream/70 text-sm">
             📍 Temi Tea Estate, P.O. Temi, South Sikkim — 731 134 &nbsp;·&nbsp; 📞 +91 7045045451
@@ -549,39 +497,54 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="bg-[oklch(0.22_0.04_150)] text-cream/80 py-16">
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-10 items-start">
-        <div>
-          <div className="font-serif text-3xl text-cream">Temi</div>
-          <div className="text-[10px] uppercase tracking-[0.3em] text-gold mt-1">Tea Estate</div>
-          <p className="mt-5 text-sm text-cream/70 max-w-xs">
-            Established 1969 · The Pride of Sikkim
-          </p>
+    <footer className="bg-white text-forest-deep/80 py-12 border-t border-gold/10">
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-12 items-start">
+        <div className="flex flex-col gap-6">
+          <div>
+            <img src={temiLogo} alt="Temi Tea Logo" className="h-12 w-auto mb-4" />
+            <p className="text-[9px] uppercase tracking-[0.2em] text-gold">Produced By</p>
+            <div className="font-serif text-2xl text-forest-deep mt-1">Temi Tea Estate</div>
+            <p className="mt-3 text-xs text-forest-deep/70 max-w-xs leading-relaxed">
+              Established 1969 · India's only government-owned organic tea garden.
+            </p>
+          </div>
+          <div className="pt-6 border-t border-forest-deep/5">
+            <img src={mrcLogo} alt="MRC Agrotech Logo" className="h-10 w-auto mb-3" />
+            <p className="text-[9px] uppercase tracking-[0.2em] text-gold">Marketed & Distributed By</p>
+            <p className="text-xs font-medium text-forest-deep mt-1">MRC Agrotech Ltd</p>
+            <p className="mt-2 text-[10px] text-forest-deep/60 leading-relaxed max-w-[240px]">
+              404, 4th Floor, Sagar Tech Plaza (B Wing), Sakinaka Junction, Next to Sakinaka Metro Station, Andheri East, Mumbai - 400072.
+            </p>
+          </div>
         </div>
-        <nav className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+        <nav className="flex flex-col gap-3">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-1">Navigation</p>
           {[
             ["Home", "#top"],
             ["All Products", SHOP_URL],
-            ["About", "#legacy"],
-            ["Offers", OFFERS_URL],
-            ["Blog", "https://temiteaestate.com/blogs/news"],
-            ["Contact", "#contact"],
+            ["About Temi", "#legacy"],
+            ["Special Offers", OFFERS_URL],
+            ["Tea Journal", "https://temiteaestate.com/blogs/news"],
+            ["Contact Us", "#contact"],
           ].map(([l, h]) => (
-            <a key={l} href={h} target={h.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="hover:text-gold transition">
+            <a key={l} href={h} target={h.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-xs hover:text-gold transition-colors w-fit">
               {l}
             </a>
           ))}
         </nav>
-        <div className="flex md:justify-end gap-4">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="border border-cream/30 w-10 h-10 flex items-center justify-center hover:border-gold hover:text-gold transition">
-            ◉
-          </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="border border-cream/30 w-10 h-10 flex items-center justify-center hover:border-gold hover:text-gold transition">
-            f
-          </a>
+        <div className="flex flex-col md:items-end gap-5">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-1">Follow the Journey</p>
+          <div className="flex gap-3">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="border border-forest-deep/10 w-10 h-10 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-500">
+              ◉
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="border border-forest-deep/10 w-10 h-10 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-500">
+              f
+            </a>
+          </div>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-6 mt-12 pt-8 border-t border-cream/10 text-xs text-cream/50 flex flex-wrap justify-between gap-4">
+      <div className="mx-auto max-w-7xl px-6 mt-12 pt-6 border-t border-forest-deep/5 text-[9px] uppercase tracking-widest text-forest-deep/40 flex flex-wrap justify-between gap-4">
         <span>© 2026 Temi Tea Estate · Govt. of Sikkim</span>
         <span>Geotagged 27°14′12″N, 88°25′20″E</span>
       </div>
@@ -596,12 +559,11 @@ function Index() {
       <main>
         <Hero />
         <Ticker />
-        <WhyTemi />
+
         <Legacy />
         <Benefits />
         <Products />
-        <Awards />
-        <Testimonials />
+
         <CTA />
       </main>
       <Footer />
